@@ -8,7 +8,7 @@ type Props = {};
 
 export const CommonHeader: FC<Props> = (): JSX.Element => {
   return (
-    <div className="p-3 bg-white rounded-md">
+    <div className="p-4 bg-white rounded-md">
       <div className="flex items-center">
         <div className="basis-1/3 sm:basis-1/4 flex items-center">
           <div className="bg-[#6040E8] p-[1px] rounded-[5px] mr-1">
@@ -17,7 +17,7 @@ export const CommonHeader: FC<Props> = (): JSX.Element => {
           <h5 className="font-bold hidden sm:block">devlinks</h5>
         </div>
 
-        <div className="basis-1/3 sm:basis-2/4 flex items-center">
+        <div className="basis-1/3 sm:basis-2/4 flex items-center justify-center">
           <NavLink to="/">
             {({ isActive }: { isActive: boolean }) => (
               <div
