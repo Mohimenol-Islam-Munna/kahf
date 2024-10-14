@@ -31,7 +31,7 @@ export const CommonHeader: FC<Props> = (): JSX.Element => {
                     className={`${isActive && "text-[#6040E8]"} `}
                   />
                 </div>
-                <h5 className="hidden sm:block">links</h5>
+                <h5 className="hidden sm:block capitalize">Links</h5>
               </div>
             )}
           </NavLink>
@@ -48,7 +48,7 @@ export const CommonHeader: FC<Props> = (): JSX.Element => {
                     className={`${isActive && "text-[#6040E8]"} `}
                   />
                 </div>
-                <h5 className="hidden sm:block">Profile details</h5>
+                <h5 className="hidden sm:block capitalize">Profile details</h5>
               </div>
             )}
           </NavLink>

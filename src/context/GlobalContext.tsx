@@ -8,10 +8,19 @@ export type LinkListItemType = {
   platform: string;
 };
 
+export type ProfileStateType = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  profileImage: File | null;
+  profileImageBase64: string | ArrayBuffer | null;
+};
+
 export type LinkListType = Array<LinkListItemType>;
 
 export type GlobalContextStateType = {
   linkList: LinkListType;
+  profileInfo: ProfileStateType;
 };
 
 export type UseGlobalContextType = {

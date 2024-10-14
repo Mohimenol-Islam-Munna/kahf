@@ -5,7 +5,7 @@ type Props = {};
 
 export const Container: FC<Props> = (): JSX.Element => {
   return (
-    <div className="w-full max-w-screen-lg mx-auto bg-[#FAFAFA] p-4">
+    <div className="w-full max-w-screen-lg mx-auto">
       <Outlet />
     </div>
   );

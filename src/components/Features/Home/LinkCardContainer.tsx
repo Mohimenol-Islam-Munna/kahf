@@ -4,6 +4,7 @@ import { IoAddOutline } from "react-icons/io5";
 import { useGlobalContextState } from "../../../Hooks";
 import { LinkListItemType, LinkListType } from "../../../context";
 import { LinkCard } from "./LinkCard";
+import { setLocalStorage } from "../../../utils";
 
 export const LinkCardContainer: FC = (): JSX.Element => {
   const value = useGlobalContextState();
@@ -58,7 +59,7 @@ export const LinkCardContainer: FC = (): JSX.Element => {
 
       newLinkItem.id = linkIndex + 1;
 
-      setLinkListState([...linkListState, newLinkItem]);
+      setLinkListState([newLinkItem, ...linkListState]);
     } else {
       setLinkListState([newLinkItem]);
     }
@@ -67,18 +68,35 @@ export const LinkCardContainer: FC = (): JSX.Element => {
   const linkSaveHandler = () => {
     globalContextStateHandler &&
       globalContextStateHandler("linkList", linkListState);
+
+    setLocalStorage("linkList", linkListState);
+  };
+
+  const linkRemoveHandler = (id: number) => {
+    let newLinkList: LinkListType = [];
+
+    if (linkListState) {
+      const filteredLink = linkListState.filter((item: LinkListItemType) => {
+        return item.id !== id;
+      });
+
+      newLinkList = [...filteredLink];
+
+      setLinkListState(newLinkList);
+    }
   };
 
   useEffect(() => {
-    setLinkListState(linkList);
-  }, [linkList]);
+    const difference = linkListState?.filter(
+      (item: LinkListItemType) => !linkList?.includes(item)
+    );
 
-  console.log("linkList :", linkList);
-  console.log("linkListState :", linkListState);
+    setLinkListState([...(difference || []), ...(linkList || [])]);
+  }, [linkList]);
 
   return (
     <div>
-      <div className="mt-8 mb-4">
+      <div className="mt-8 mb-4 px-6">
         <button
           onClick={addLinkHandler}
           className="w-full flex items-center justify-center border border-[#6040E8] py-1 px-4 rounded-md"
@@ -94,16 +112,29 @@ export const LinkCardContainer: FC = (): JSX.Element => {
           linkSaveHandler();
         }}
       >
-        {linkListState?.map((item: LinkListItemType, index: number) => (
-          <LinkCard
-            key={index}
-            item={item}
-            linkListStateChangeHandler={linkListStateChangeHandler}
-          />
-        ))}
-        <div className="text-white text-right font-normal text-sm">
-          <button type="submit" className="bg-[#6040E8] py-2 px-4 rounded-md">
-            <span className="hidden sm:block">Save</span>
+        <div className="px-6">
+          {linkListState?.map((item: LinkListItemType, index: number) => (
+            <LinkCard
+              key={index}
+              serial={index}
+              item={item}
+              linkListStateChangeHandler={linkListStateChangeHandler}
+              linkRemoveHandler={linkRemoveHandler}
+            />
+          ))}
+        </div>
+
+        <div className="mt-16 pt-4 px-6 text-white text-right font-normal text-sm border-t">
+          <button
+            type="submit"
+            className={`bg-[#6040E8] py-2 px-4 rounded-md ${
+              linkList?.length === 0 && linkListState?.length === 0
+                ? "cursor-not-allowed"
+                : "cursor-pointer"
+            }`}
+            disabled={linkList?.length === 0 && linkListState?.length === 0}
+          >
+            Save
           </button>
         </div>
       </form>

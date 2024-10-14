@@ -1,23 +1,23 @@
 import { useState } from "react";
 import { GlobalContextStateType, UseGlobalContextType } from "../context";
+import { getLocalStorage } from "../utils";
 
 export const useGlobalContext = (): UseGlobalContextType => {
+  const linkListData = getLocalStorage("linkList");
+  const profileInfoData = getLocalStorage("profileInfo");
+
   const [globalContextState, setGlobalContextState] =
     useState<GlobalContextStateType>({
-      linkList: [
-        {
-          id: 1,
-          title: "Github Link",
-          linkUrl: "https://github.com/Mohimenol-Islam-Munna",
-          platform: "github",
-        },
-        {
-          id: 2,
-          title: "Facebook Link",
-          linkUrl: "https://www.facebook.com/mohimenol.munna",
-          platform: "facebook",
-        },
-      ],
+      linkList: linkListData || [],
+      profileInfo: profileInfoData
+        ? { ...profileInfoData, profileImage: null }
+        : {
+            firstName: "",
+            lastName: "",
+            email: "",
+            profileImage: null,
+            profileImageBase64: "",
+          },
     });
 
   const globalContextStateHandler = (key: string, value: any) => {

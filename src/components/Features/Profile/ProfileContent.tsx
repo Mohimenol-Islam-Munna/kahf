@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { HomeContentHeader } from "./HomeContentHeader";
-import { LinkCardContainer } from "./LinkCardContainer";
+import { ProfileContentHeader } from "./ProfileContentHeader";
+import { ProfileContentBody } from "./ProfileContentBody";
 import { ProfileViewer } from "../../Shared";
 
-export const HomeContent: FC = (): JSX.Element => {
+export const ProfileContent: FC = (): JSX.Element => {
   return (
     <div className="mt-4">
       <div className="grid grid-cols-10 gap-4">
@@ -13,8 +13,8 @@ export const HomeContent: FC = (): JSX.Element => {
           </div>
         </div>
         <div className="col-span-10 md:col-span-6 pt-8 pb-4 bg-white rounded-md self-start">
-          <HomeContentHeader />
-          <LinkCardContainer />
+          <ProfileContentHeader />
+          <ProfileContentBody />
         </div>
       </div>
     </div>

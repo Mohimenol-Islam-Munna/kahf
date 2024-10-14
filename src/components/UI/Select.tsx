@@ -1,9 +1,9 @@
 import { ChangeEvent, FC, HTMLInputTypeAttribute } from "react";
-import { IoEyeOutline } from "react-icons/io5";
+
 import {
   SelectIconMapper,
   SelectIconMapperType,
-} from "../../helpers/selectIconMapper";
+} from "../Shared/SelectIconMapper";
 
 type SelectItemType = { label: string; value: any };
 
@@ -35,7 +35,7 @@ export const Select: FC<Props> = ({
         </label>
       </div>
       <div className="mt-1 relative">
-        {value && SelectIconMapper(value as SelectIconMapperType)}
+        {value && <SelectIconMapper value={value as SelectIconMapperType} />}
 
         <select
           id={name}

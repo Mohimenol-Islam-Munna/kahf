@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import { BsGithub } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa";
 import { CgYoutube } from "react-icons/cg";
@@ -14,57 +16,77 @@ export type SelectIconMapperType =
   | "twitter"
   | "instagram";
 
-export const SelectIconMapper = (value: SelectIconMapperType) => {
-  console.log("value :", value);
+type Props = {
+  value: SelectIconMapperType;
+  hasCustomPosition?: boolean;
+};
 
+export const SelectIconMapper: FC<Props> = ({
+  value,
+  hasCustomPosition = true,
+}): JSX.Element => {
   switch (value) {
     case "github":
       return (
         <BsGithub
           size={16}
-          className="absolute top-1/2 -translate-y-1/2 left-2"
+          className={`${
+            hasCustomPosition ? "absolute top-1/2 -translate-y-1/2 left-2" : ""
+          }`}
         />
       );
     case "facebook":
       return (
         <FaFacebook
           size={16}
-          className="absolute top-1/2 -translate-y-1/2 left-2"
+          className={`${
+            hasCustomPosition ? "absolute top-1/2 -translate-y-1/2 left-2" : ""
+          }`}
         />
       );
     case "youtube":
       return (
         <CgYoutube
           size={16}
-          className="absolute top-1/2 -translate-y-1/2 left-2"
+          className={`${
+            hasCustomPosition ? "absolute top-1/2 -translate-y-1/2 left-2" : ""
+          }`}
         />
       );
     case "linkedin":
       return (
         <BiLogoLinkedinSquare
           size={16}
-          className="absolute top-1/2 -translate-y-1/2 left-2"
+          className={`${
+            hasCustomPosition ? "absolute top-1/2 -translate-y-1/2 left-2" : ""
+          }`}
         />
       );
     case "twitter":
       return (
         <BsTwitterX
           size={16}
-          className="absolute top-1/2 -translate-y-1/2 left-2"
+          className={`${
+            hasCustomPosition ? "absolute top-1/2 -translate-y-1/2 left-2" : ""
+          }`}
         />
       );
     case "instagram":
       return (
         <SlSocialInstagram
           size={16}
-          className="absolute top-1/2 -translate-y-1/2 left-2"
+          className={`${
+            hasCustomPosition ? "absolute top-1/2 -translate-y-1/2 left-2" : ""
+          }`}
         />
       );
     default:
       return (
         <MdOutlineSocialDistance
           size={16}
-          className="absolute top-1/2 -translate-y-1/2 left-2"
+          className={`${
+            hasCustomPosition ? "absolute top-1/2 -translate-y-1/2 left-2" : ""
+          }`}
         />
       );
   }

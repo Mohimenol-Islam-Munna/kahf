@@ -3,6 +3,12 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
+    backgroundSize: {
+      auto: "auto",
+      cover: "cover",
+      contain: "contain",
+      full: "100% 100%",
+    },
   },
   plugins: [],
 };
