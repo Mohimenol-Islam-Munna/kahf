@@ -48,7 +48,7 @@ export const ProfileViewer: FC<Props> = ({
       className={`${
         isFinalPreview
           ? "w-[350px]"
-          : "w-full max-w-[300px] bg-[url(../../../../public/frame.png)] bg-no-repeat bg-center bg-full"
+          : "w-full max-w-[300px] bg-[url(/frame.png)] bg-no-repeat bg-center bg-full"
       }`}
     >
       <div className={`w-full ${isFinalPreview ? "p-10" : "p-10 pt-16"}`}>
